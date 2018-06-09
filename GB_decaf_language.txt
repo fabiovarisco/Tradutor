@@ -1,0 +1,32 @@
+Program → (Var | Func )*
+Var → Type ID (‘[’ DEC ‘]’)? ‘;’
+Func → def Type ID ‘(’ ParamList? ‘)’ Block
+ParamList → Type ID (‘,’ Type ID)*
+Block → { Var* Stmt* }
+Stmt → Loc ‘=’ Expr ‘;’
+Stmt → FuncCall ‘;’
+Stmt → if ‘(’ Expr ‘)’ Block ( else Block )?
+Stmt → while ‘(’ Expr ‘)’ Block
+Stmt → return Expr? ‘;’
+Stmt → break ‘;’
+Stmt → continue ‘;’
+Expr → Expr BINOP Expr
+Expr → UNOP Expr
+Expr → ‘(’ Expr ‘)’
+Expr → Loc
+Expr → FuncCall
+Expr → Lit
+Type → int | bool | void
+Loc → ID (‘[’ Expr ‘]’)?
+FuncCall → ID ‘(’ ArgList? ‘)’
+ArgList → Expr (‘,’ Expr )*
+Lit → DEC | HEX | STR | true | false
+
+
+
+Eliminando recursão à esquerda: 
+
+Expr → Expr BINOP Expr | UNOP Expr | ‘(’ Expr ‘)’ | Loc | FuncCall | Lit
+
+Expr -> UNOP EXPR2 | ‘(’ Expr ‘)’ EXPR2 | Loc EXPR2 | FuncCall EXPR2 | Lit EXPR2
+EXPR2 -> BINOP Expr EXPR2 | VAZIO

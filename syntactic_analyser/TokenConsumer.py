@@ -3,6 +3,7 @@ Created on 17 de mai de 2018
 
 @author: I844141
 '''
+from syntactic_analyser.SyntacticException import SyntacticException
 
 class TokenConsumer(object):
     '''
@@ -33,17 +34,31 @@ class TokenConsumer(object):
         
     def getCurrent(self):
         '''
-        Returns the current token
+        Returns the current token value
         '''
+        if (self.pos >= len(self.tokens)):
+            return ''
         return self.tokens[self.pos].value
     
     def getCurrentType(self):
         '''
         Returns the type of the current token
         '''
+        if (self.pos >= len(self.tokens)):
+            return ''
         return self.tokens[self.pos].token_type
     
+    def getCurrentToken(self):
+        '''
+        Returns the current Token object
+        '''
+        if (self.pos >= len(self.tokens)):
+            return None
+        return self.tokens[self.pos]
+    
     def getNextTokenType(self):
+        if (self.pos + 1 >= len(self.tokens)):
+            return ''
         return self.tokens[self.pos + 1].token_type
     
     def consume(self, token_type):
@@ -67,7 +82,8 @@ class TokenConsumer(object):
     
     def error(self, token_type):
         print('Was expecting ' + token_type + ", but got " + self.getCurrent() + " instead.")
-        raise Exception("Compilation error found on token: " + self.getCurrent())
+        raise SyntacticException(token_type, self.getCurrentType(), self.getCurrent(), self.getCurrentToken().line, self.getCurrentToken().position)
+        #raise Exception("Compilation error found on token: " + self.getCurrent())
     
     def endOfFileError(self, token_type):
         print('Was expecting ' + token_type + ", but reached end of file.")
