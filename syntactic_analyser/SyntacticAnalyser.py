@@ -472,7 +472,7 @@ class SyntacticAnalyser(object):
 #         #TODO Impl
         
 if __name__ == "__main__":
-    with open('../sample1.decaf','r') as f:
+    with open('../sample3.decaf','r') as f:
         text = f.readlines()
         text = [l.strip() for l in text]
         

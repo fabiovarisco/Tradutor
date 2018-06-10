@@ -19,5 +19,5 @@ class SyntacticException(Exception):
         self.currentToken = current_token
         self.line = line
         self.column = column
-        super().__init__(f'Expected: [ {expected_token_type} ], but got [ {current_token_type} ], when evaluating token \'{current_token}\' at line {line}, column {column}.')
+        super().__init__('Expected: [ {expected_token_type} ], but got [ {current_token_type} ], when evaluating token \'{current_token}\' at line {line}, column {column}.')
         

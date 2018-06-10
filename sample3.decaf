@@ -1,0 +1,25 @@
+def void bubbleSort(int arr) {
+    int n; 
+    int temp;
+    
+    n = 10;
+    temp = 0;  
+     for(int i; i < n; i++){  
+             for(int j; j < (n-i); j++){  
+                      if(arr[j-1] > arr[j]){  
+                             //swap elements  
+                             temp = arr[j-1];  
+                             arr[j-1] = arr[j];  
+                             arr[j] = temp;  
+                     }  
+                      
+             }  
+     }  
+}
+
+def void main() {
+    
+    int arr[] ={3,60,35,2,45,320,5};  
+    bubbleSort(arr);//sorting array elements using bubble sort  
+
+}
