@@ -1,43 +1,22 @@
-//
-// Classes with inheritance
-//
-
-class Animal {
-  int height;
-  Animal mother;
-  void InitAnimal(int h, Animal mom) {
-    this.height = h;
-    mother = mom;
-  }
-
-  int GetHeight() {	
-    return height;
-  }
-
-  Animal GetMom() {
-    return this.mother;
-  }
+def void bubbleSort(int [] arr) {
+    int n = arr.length;  
+    int temp = 0;  
+     for(int i=0; i < n; i++){  
+             for(int j=1; j < (n-i); j++){  
+                      if(arr[j-1] > arr[j]){  
+                             //swap elements  
+                             temp = arr[j-1];  
+                             arr[j-1] = arr[j];  
+                             arr[j] = temp;  
+                     }  
+                      
+             }  
+     }  
 }
 
-class Cow extends Animal {
-  bool isSpotted;
-  void InitCow(int h, Animal m, bool spot) {
-    isSpotted = spot;
-    InitAnimal(h,m);
-  }
-  bool IsSpottedCow () {
-    return isSpotted;
-  }
-}
+def void main() {
+    
+    int arr[] ={3,60,35,2,45,320,5};  
+    bubbleSort(arr);//sorting array elements using bubble sort  
 
-
-void main() {
-  Cow betsy;
-  Animal b;
-  betsy = new Cow;
-  
-  betsy.InitCow(5, null, true);
-  b = betsy;
-  b.GetMom();
-  Print("spots: ",betsy.IsSpottedCow(), "    height: ", b.GetHeight());
 }
