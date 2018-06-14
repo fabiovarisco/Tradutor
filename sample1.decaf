@@ -3,8 +3,7 @@ bool isSpotted;
 
 def bool myFunc(int n1, int n2, bool test) {
 	a = b + (c + 2);
-	hexVar = 0xABCDFF;
-	
+	hexVar = 0xABCDFF;	
 	//this is a comment. 
 	//But, block comments are not supported.
 	return true;
